@@ -20,9 +20,10 @@
 
             <v-card-text>
 
-                <v-select filled label="Sort items by" 
-                    :items="['Buy Price Ascending', 'Buy Price Descending', 'Sell Price Ascending', 'Sell Price Descending', 'Name']"
-                    :values="['asc buyPrice', 'desc buyPrice', 'asc sellPrice', 'desc sellPrice', 'asc className']"
+                <v-select filled label="Sort items by"
+                    :items="sortOptions"
+                    item-value="id"
+                    item-text="name"
                     v-model="sortEntriesBy"
                 />
             </v-card-text>
@@ -47,7 +48,29 @@ export default {
     data() {
         return {
             dialog: false,
-            sortEntriesBy: ''
+            sortEntriesBy: '',
+            sortOptions: [
+                {
+                    id: 'asc buyPrice',
+                    name: 'Buy Price Ascending'
+                },
+                {
+                    id: 'desc buyPrice',
+                    name: 'Buy Price Descending'
+                },
+                {
+                    id: 'asc sellPrice',
+                    name: 'Sell Price Ascending'
+                },
+                {
+                    id: 'desc sellPrice',
+                    name: 'Sell Price Descending'
+                },
+                {
+                    id: 'asc className',
+                    name: 'Name'
+                }
+            ]
         }
     },
 
@@ -80,7 +103,7 @@ export default {
 
             document.body.removeChild(element);
 
-            // Stop loading 
+            // Stop loading
             this.$store.state.loading = false;
 
             this.dialog = false;
