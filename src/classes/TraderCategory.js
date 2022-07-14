@@ -32,7 +32,7 @@ export default class TraderCategory
             this.rawCategory = rawCategory;
 
             // Extract name of category using a RegExp
-            this.categoryName = rawCategory.match( /(?:<Category>)([a-zA-Z0-9 |()]*)/ )[1]
+            this.categoryName = rawCategory.match( /(?:<Category>)([a-zA-Z0-9. |()]*)/ )[1]
 
             this.entries = TraderCategory.loadEntries(rawCategory);
         }
